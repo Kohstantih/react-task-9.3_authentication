@@ -1,0 +1,35 @@
+.user_box {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.avatar {
+    border-radius: 50%;
+
+    margin-left: 10px;
+}
+
+.btn_logout {
+    height: 100%;
+
+    color: red;
+
+    border: 1px solid red;
+
+    padding: 10px;
+    margin-left: 10px;
+
+    cursor: pointer;
+}
+
+.btn_logout:hover {
+    outline: 2px solid red;
+}
+
+.btn_logout:active {
+    outline: none;
+}
