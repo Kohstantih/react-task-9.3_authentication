@@ -9,12 +9,11 @@ import { TLogOut } from "../../types/TLogOut";
 import './News.css';
 
 export default function News(
-        { token, logOut, isDetails, hideToolbar }:
+        { token, logOut, changeDetailsStatus }:
         {
             token: string,
             logOut: TLogOut,
-            isDetails: boolean,
-            hideToolbar: React.Dispatch<boolean>
+            changeDetailsStatus: (status: boolean) => void
         }
     ) {
     const [news, loading, error] = useJsonFetch<[], TObjectNews[]>(import.meta.env.VITE_APP_USER_NEWS, [], token);
@@ -23,11 +22,11 @@ export default function News(
 
     return (
         <>  
-            {news && !error && !isDetails &&
+            {news && !error &&
                 <ul className="news_list">
                     {news.map((n) => <Link
+                        onClick={() => changeDetailsStatus(true)}
                         className="news-item_link"
-                        onClick={() => {hideToolbar(true)}}
                         key={n.id}
                         to={`/news/${n.id}`}
                         state={ {obj: n} } >
